@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity flash_logic
+INFO: [VRFC 10-163] Analyzing VHDL file "E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity top_level

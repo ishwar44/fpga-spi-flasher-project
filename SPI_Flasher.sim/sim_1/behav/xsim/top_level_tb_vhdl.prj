@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../SPI_Flasher.srcs/sources_1/new/flash_logic.vhd" \
+"../../../../SPI_Flasher.srcs/sources_1/imports/new/uart.vhd" \
+"../../../../SPI_Flasher.srcs/sources_1/new/top_level.vhd" \
+"../../../../SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd" \
+"../../../../SPI_Flasher.srcs/sim_1/new/top_level_tb.vhd" \
+
+# Do not sort compile order
+nosort

@@ -2,8 +2,8 @@
 2018.2
 Jun 14 2018
 20:41:02
-E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sim_1/new/top_level_tb.vhd,1568464211,vhdl,,,,cfg_tb_top_level;tb_top_level,,,,,,,,
+E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sim_1/new/top_level_tb.vhd,1568470341,vhdl,,,,cfg_tb_top_level;tb_top_level,,,,,,,,
 E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd,1561050428,vhdl,,,,spi_quad_master,,,,,,,,
 E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd,1561050447,vhdl,E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd,,,uart,,,,,,,,
-E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd,1568465299,vhdl,E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd,,,flash_logic,,,,,,,,
+E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd,1568470003,vhdl,E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd,,,flash_logic,,,,,,,,
 E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd,1568465077,vhdl,,,,top_level,,,,,,,,

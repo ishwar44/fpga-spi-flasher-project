@@ -47,7 +47,7 @@ begin
     begin
         -- EDIT Adapt initialization as needed
         rst <= '1';
-        rx <= '0';
+        rx <= '1';
 
         wait;
     end process;

@@ -17,6 +17,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
+set_param xicom.use_bs_reader 1
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -35,6 +36,8 @@ read_vhdl -library xil_defaultlib {
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/std_logic_textio.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/util.vhd
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

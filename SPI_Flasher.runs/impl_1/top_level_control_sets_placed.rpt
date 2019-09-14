@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Sat Sep 14 15:40:32 2019
+| Date         : Sat Sep 14 17:27:25 2019
 | Host         : Ishwar running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
 | Design       : top_level
@@ -23,8 +23,8 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |     9 |
-| Unused register locations in slices containing registers |    12 |
+| Number of unique control sets                            |    11 |
+| Unused register locations in slices containing registers |    14 |
 +----------------------------------------------------------+-------+
 
 
@@ -35,8 +35,8 @@ Table of Contents
 | Fanout | Control Sets |
 +--------+--------------+
 |      8 |            2 |
-|     10 |            1 |
-|    16+ |            6 |
+|     14 |            2 |
+|    16+ |            7 |
 +--------+--------------+
 
 
@@ -46,12 +46,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              10 |            3 |
-| No           | No                    | Yes                    |              42 |            8 |
+| No           | No                    | No                     |              14 |            3 |
+| No           | No                    | Yes                    |              56 |           12 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              32 |            3 |
-| Yes          | No                    | Yes                    |              32 |            4 |
-| Yes          | Yes                   | No                     |              32 |            5 |
+| Yes          | No                    | No                     |              50 |            8 |
+| Yes          | No                    | Yes                    |              32 |            5 |
+| Yes          | Yes                   | No                     |              90 |           12 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -61,15 +61,17 @@ Table of Contents
 +----------------+--------------------------------------+------------------------+------------------+----------------+
 |  Clock Signal  |             Enable Signal            |    Set/Reset Signal    | Slice Load Count | Bel Load Count |
 +----------------+--------------------------------------+------------------------+------------------+----------------+
-|  clk_IBUF_BUFG | uart/tx_count[3]_i_1_n_0             | uart/rx_count_reg[0]_0 |                1 |              8 |
+|  clk_IBUF_BUFG | flasher/E[0]                         | uart/rx_count_reg[0]_0 |                1 |              8 |
 |  clk_IBUF_BUFG | uart/rx_count0                       | uart/rx_count_reg[0]_0 |                1 |              8 |
-|  clk_IBUF_BUFG |                                      |                        |                3 |             10 |
-|  clk_IBUF_BUFG | flasher/current_index[7]_i_1_n_0     | uart/rx_count_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG |                                      |                        |                3 |             14 |
+|  clk_IBUF_BUFG | spi/clk_toggles0                     |                        |                3 |             14 |
+|  clk_IBUF_BUFG | flasher/current_index[7]_i_1_n_0     | uart/rx_count_reg[0]_0 |                2 |             16 |
 |  clk_IBUF_BUFG | flasher/current_uart_data[7]_i_1_n_0 | uart/rx_count_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | uart/rx_buffer0                      |                        |                1 |             16 |
-|  clk_IBUF_BUFG | uart/rx_data0                        | uart/rx_count_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | uart/tx_buffer[8]_i_1_n_0            |                        |                2 |             16 |
-|  clk_IBUF_BUFG |                                      | uart/rx_count_reg[0]_0 |                8 |             42 |
+|  clk_IBUF_BUFG | uart/rx_data0                        | uart/rx_count_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | uart/rx_buffer0                      |                        |                2 |             16 |
+|  clk_IBUF_BUFG | uart/tx_buffer[9]_i_1_n_0            |                        |                3 |             20 |
+|  clk_IBUF_BUFG |                                      | uart/rx_count_reg[0]_0 |               12 |             56 |
+|  clk_IBUF_BUFG | spi/count0_0                         | spi/count[31]_i_1_n_0  |                8 |             58 |
 +----------------+--------------------------------------+------------------------+------------------+----------------+
 
 

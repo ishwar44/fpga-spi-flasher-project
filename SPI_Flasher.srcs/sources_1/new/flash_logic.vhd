@@ -34,7 +34,10 @@ use IEEE.NUMERIC_STD.ALL;
 entity flash_logic is
     GENERIC(
 		clk_freq	:	INTEGER		:= 100000000;
-		uart_data_width		:	INTEGER		:= 8);
+		uart_data_width		:	INTEGER		:= 8;
+		spi_data_width		:	INTEGER		:= 8;
+		spi_cmd_width		:	INTEGER		:= 8
+		);
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
            uart_tx_en : out STD_LOGIC;
@@ -42,8 +45,14 @@ entity flash_logic is
            uart_tx_busy : in STD_LOGIC;
            uart_rx_data :in STD_LOGIC_VECTOR(uart_data_width - 1 downto 0);
            uart_rx_busy : in STD_LOGIC;
-           led : out STD_LOGIC_VECTOR(15 downto 0)  := (others => '0')
-           
+           led : out STD_LOGIC_VECTOR(15 downto 0)  := (others => '0');
+           rw_sig : out std_logic := '0';
+           cont_spi : out std_logic := '0';
+           SPI_CMD_out : out STD_LOGIC_VECTOR(spi_cmd_width - 1 downto 0)  := (others => '0');
+           SPI_data_out : out STD_LOGIC_VECTOR(spi_data_width - 1 downto 0)  := (others => '0');
+           mode_sel : out STD_LOGIC_VECTOR(1 downto 0)  := (others => '0');
+           cmd_only : out STD_LOGIC:= '0';
+           SPI_data_in : in STD_LOGIC_VECTOR(spi_data_width - 1 downto 0)
            );
 end flash_logic;
 

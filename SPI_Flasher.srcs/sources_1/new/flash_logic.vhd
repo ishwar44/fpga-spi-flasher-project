@@ -54,13 +54,14 @@ entity flash_logic is
            SPI_data_out : out STD_LOGIC_VECTOR(spi_data_width - 1 downto 0)  := (others => '0');
            mode_sel : out STD_LOGIC_VECTOR(1 downto 0)  := (others => '0');
            cmd_only : out STD_LOGIC:= '0';
-           SPI_data_in : in STD_LOGIC_VECTOR(spi_data_width - 1 downto 0)
+           SPI_data_in : in STD_LOGIC_VECTOR(spi_data_width - 1 downto 0);
+           SPI_busy : in std_logic
            );
 end flash_logic;
 
 architecture Behavioral of flash_logic is
 type byte_arr is array (0 to 255) of std_logic_vector(7 downto 0);
-type state_type is (wait_for_clock,uart_welecome,wait_for_uart,get_uart_data,check_cmd_byte,send_uart_data,send_to_spi,wait_for_uart_main,get_uart_data_main);
+type state_type is (wait_for_clock,uart_welecome,wait_for_uart,get_uart_data,check_cmd_byte,send_uart_data,send_to_spi,flash_memory,set_num_bytes);
 signal state,next_state,saved_state,next_saved_state: state_type:= uart_welecome; -- current and next state
 constant Hello_msg : String (1 to 12) := "Hello,World!";
 
@@ -75,6 +76,13 @@ signal next_address : unsigned(n_bits(memory_size-1) -1 downto 0);
 
 signal current_data : byte_arr := (others => (others => '0'));
 signal next_data : byte_arr := (others => (others => '0'));
+
+signal current_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
+signal next_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
+
+constant write_ins : std_logic_vector(7 downto 0) := "00000010";
+constant read_ins : std_logic_vector(7 downto 0) := "00000011";
+
 begin
 
 SYNC_PROC: process (clk) 
@@ -87,6 +95,7 @@ SYNC_PROC: process (clk)
         current_uart_data <= (others => '0');
         current_address <= (others => '0');
         current_data <= (others => (others => '0'));
+        current_num_bytes <= to_unsigned(4,8);
       else
         state <= next_state;
         current_index <= next_index;
@@ -94,17 +103,23 @@ SYNC_PROC: process (clk)
         current_uart_data <= next_uart_data;
         current_address <= next_address;
         current_data <= next_data;
+        current_num_bytes <= next_num_bytes;
       end if;
     end if;
   end process;
 
 
-  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data)
+  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy)
   begin
     uart_tx_en <= '0';
     uart_tx_data <= (others => '0');
     led <= (others => '0');
-    
+    rw_sig <= '0';
+    cont_spi <= '0';
+    SPI_CMD_out <= (others => '0');
+    SPI_data_out <= (others => '0');
+    mode_sel <= (others => '0');
+    cmd_only <= '0';
     case (state) is
       when uart_welecome =>
         uart_tx_data <=  std_logic_vector( to_unsigned( character'pos(Hello_msg(to_integer(current_index)+ 1)), uart_data_width));
@@ -123,14 +138,9 @@ SYNC_PROC: process (clk)
      
      when check_cmd_byte =>
      
-     when wait_for_uart_main =>
-               
-               
-     when get_uart_data_main =>
-       led(15 downto 1) <=(others => '0') ;
-       led(0) <= uart_rx_busy;
+
         
-        
+     
       
       when send_uart_data =>
       led(15 downto 2) <=(others => '0') ;
@@ -143,8 +153,11 @@ SYNC_PROC: process (clk)
            uart_tx_en <= '0';
        end if;
        
-       when send_to_spi =>
-       
+       when flash_memory =>
+        SPI_CMD_out <= write_ins;
+        SPI_data_out <= current_data(to_integer(current_index));
+        rw_sig <= '1';
+        cont_spi <= '1';
       
       when wait_for_clock =>
         
@@ -156,7 +169,7 @@ SYNC_PROC: process (clk)
   end process;
 
 
-  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data)
+  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy)
   begin
   
     next_state <= state;
@@ -165,6 +178,7 @@ SYNC_PROC: process (clk)
     next_uart_data <= current_uart_data;
     next_address <= current_address;
     next_data <= current_data;
+    next_num_bytes <= current_num_bytes;
     case (state) is
       when wait_for_clock =>
         next_state <= saved_state;
@@ -191,58 +205,48 @@ SYNC_PROC: process (clk)
         end if;
       
       when get_uart_data =>
-         if(uart_rx_busy = '0') then
-             next_state <= check_cmd_byte;
-             next_uart_data <= uart_rx_data;
-         else
-             next_state <= get_uart_data;
-         end if;
+        if(uart_rx_busy = '0') then
+           next_data(to_integer(current_index)) <= uart_rx_data;
+           if(current_index = current_num_bytes - 1) then
+              next_index <= (others => '0');
+              next_state <= check_cmd_byte;
+           else
+              next_index <= current_index + 1;
+              next_state <= wait_for_uart;
+           end if;
+       else
+           next_state <= get_uart_data;
+       end if;
      
      when check_cmd_byte =>
         next_index <= (others => '0');
-        if (current_uart_data = "01110100") then --t for test currently  just echoing uart data
-            next_state <= wait_for_uart_main;
-            next_uart_data <= (others => '0');
-        elsif (current_uart_data = "01100110") then -- f to flash memory at address 0
+        next_uart_data <= (others => '0');
+        if (current_data(0) = "01110100") then --t for test currently  just echoing uart data
+            next_state <= send_uart_data;
+            next_index <= to_unsigned(1,8);
+        elsif (current_data(0) = "01100110") then -- f to flash memory at address 0
+            next_state <= flash_memory;
+        elsif (current_data(0) = "01110111") then -- w to write to memory at a given address
         
-        elsif (current_uart_data = "01110111") then -- w to write to memory at a given address
+        elsif (current_data(0) = "01110011") then -- s to read from the start of memory
         
-        elsif (current_uart_data = "01110011") then -- s to read from the start of memory
+        elsif (current_data(0) = "01110010") then -- r to read from the memory at a given address
         
-        elsif (current_uart_data = "01110010") then -- r to read from the memory at a given address
+        elsif (current_data(0) = "01100001") then  -- a to set the address 
         
+        elsif (current_data(0) = "01100010") then  -- b to set the number of bytes
+            next_state <= set_num_bytes;
+        elsif (current_data(0) = "01100101") then  -- e to enable the write access
         else
             next_state <= wait_for_uart;
         end if;
         
-     
-     when wait_for_uart_main =>
-        if(uart_rx_busy = '1') then
-            next_state <= get_uart_data_main;
-        else
-            next_state <= wait_for_uart_main;
-        end if;
-      
-      when get_uart_data_main =>
-         if(uart_rx_busy = '0') then
-             next_data(to_integer(current_index)) <= uart_rx_data;
-             if(current_index = 15) then
-                next_index <= (others => '0');
-                next_state <= send_uart_data;
-             else
-                next_index <= current_index + 1;
-                next_state <= wait_for_uart_main;
-             end if;
-         else
-             next_state <= get_uart_data_main;
-         end if;
-        
          
      when send_uart_data =>
         if(uart_tx_busy = '0') then
-           if(current_index = 15) then
+           if(current_index = current_num_bytes - 1) then
               next_index <= (others => '0');
-              next_state <= check_cmd_byte;
+              next_state <= wait_for_uart;
            else
               next_state <= wait_for_clock;
               next_saved_state <= send_uart_data;
@@ -252,6 +256,29 @@ SYNC_PROC: process (clk)
             next_state <= send_uart_data;
         end if;
        
+     when  flash_memory =>
+         if(SPI_busy = '0') then
+           if(current_index = current_num_bytes - 1) then
+              next_index <= (others => '0');
+              next_state <= wait_for_uart;
+           else
+              next_state <= wait_for_clock;
+              next_saved_state <= flash_memory;
+              next_index <= current_index + 1;
+           end if;
+        else
+            next_state <= flash_memory;
+        end if;
+        
+     
+     
+     when set_num_bytes =>
+        next_state <= wait_for_uart;
+         if(unsigned(current_data(1)) > 1) then
+               next_num_bytes <= unsigned(current_data(1));
+          end if;
+     
+        
         
      when send_to_spi =>
         

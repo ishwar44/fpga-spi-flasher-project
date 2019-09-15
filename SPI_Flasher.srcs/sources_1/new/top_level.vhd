@@ -118,7 +118,8 @@ port map
     SPI_data_in => spi_rx_data_sig,
     mode_sel => mode_sel_sig,
     cmd_only => cmd_only_sig,
-    led => LED
+    led => LED,
+    SPI_busy =>spi_busy_sig
 );
 
 spi : entity work.spi_quad_master
@@ -151,7 +152,6 @@ spi : entity work.spi_quad_master
     sdio_3 => sdio3, 
     busy  => spi_busy_sig, 
     rx_data => spi_rx_data_sig
-  
   );
 
 end Behavioral;

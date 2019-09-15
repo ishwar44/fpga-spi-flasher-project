@@ -112,14 +112,17 @@ port map
     uart_tx_busy => uart_tx_busy_sig, 
     uart_rx_data => uart_rx_data_sig,
     uart_rx_busy => uart_rx_busy_sig,
-    rw_sig => rw_sig,
+    rw => rw_sig,
     SPI_CMD_out => SPI_CMD_out_sig,
     SPI_data_out => spi_tx_data_sig,
     SPI_data_in => spi_rx_data_sig,
     mode_sel => mode_sel_sig,
     cmd_only => cmd_only_sig,
     led => LED,
-    SPI_busy =>spi_busy_sig
+    SPI_busy =>spi_busy_sig,
+    SPI_ena =>spi_ena_sig,
+    command_debug => '0',
+    cont_spi => cont_spi_sig
 );
 
 spi : entity work.spi_quad_master
@@ -133,10 +136,10 @@ spi : entity work.spi_quad_master
   
   port map
   (
-    clk => clk,
-    rst => rst,
+    clock => clk,
+    reset_n => rst,
     enable => spi_ena_sig,
-    clk_div => 25,
+    clk_div => 200,
     addr =>  0,   
     rw  => rw_sig,
     cont => cont_spi_sig,    

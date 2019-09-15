@@ -19,9 +19,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 7208 
+INFO: Helper process launched with PID 21392 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 387.352 ; gain = 97.168
+Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 387.902 ; gain = 96.984
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_level' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:56]
 	Parameter clk_freq bound to: 100000000 - type: integer 
@@ -38,36 +38,26 @@ INFO: [Synth 8-638] synthesizing module 'uart' [E:/workspace/SPI_Flasher/SPI_Fla
 	Parameter parity_eo bound to: 1'b0 
 WARNING: [Synth 8-614] signal 'os_pulse' is read in the process but is not in the sensitivity list [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd:74]
 INFO: [Synth 8-256] done synthesizing module 'uart' (1#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd:26]
-INFO: [Synth 8-638] synthesizing module 'flash_logic' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:61]
+INFO: [Synth 8-638] synthesizing module 'flash_logic' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:64]
 	Parameter clk_freq bound to: 100000000 - type: integer 
 	Parameter uart_data_width bound to: 8 - type: integer 
 	Parameter spi_data_width bound to: 8 - type: integer 
 	Parameter spi_cmd_width bound to: 8 - type: integer 
 	Parameter memory_size bound to: 131072 - type: integer 
-WARNING: [Synth 8-6014] Unused sequential element current_uart_data_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:91]
-WARNING: [Synth 8-6014] Unused sequential element current_address_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:92]
-INFO: [Synth 8-256] done synthesizing module 'flash_logic' (2#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:61]
-INFO: [Synth 8-638] synthesizing module 'spi_quad_master' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:36]
+WARNING: [Synth 8-614] signal 'SPI_data_in' is read in the process but is not in the sensitivity list [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:198]
+WARNING: [Synth 8-6014] Unused sequential element current_uart_data_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:97]
+WARNING: [Synth 8-6014] Unused sequential element current_address_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:98]
+INFO: [Synth 8-256] done synthesizing module 'flash_logic' (2#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:64]
+INFO: [Synth 8-638] synthesizing module 'spi_quad_master' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:38]
 	Parameter cpol bound to: 1'b0 
 	Parameter cpha bound to: 1'b0 
 	Parameter slaves bound to: 1 - type: integer 
 	Parameter cmd_width bound to: 8 - type: integer 
 	Parameter d_width bound to: 8 - type: integer 
-WARNING: [Synth 8-614] signal 'rst' is read in the process but is not in the sensitivity list [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:53]
-INFO: [Synth 8-256] done synthesizing module 'spi_quad_master' (3#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:36]
-WARNING: [Synth 8-3848] Net spi_ena_sig in module/entity top_level does not have driver. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:63]
-WARNING: [Synth 8-3848] Net cont_spi_sig in module/entity top_level does not have driver. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:65]
+INFO: [Synth 8-256] done synthesizing module 'spi_quad_master' (3#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:38]
 INFO: [Synth 8-256] done synthesizing module 'top_level' (4#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:56]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[7]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[6]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[5]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[4]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[3]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[2]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[1]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[0]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 472.941 ; gain = 182.758
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 498.953 ; gain = 208.035
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -76,16 +66,14 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-WARNING: [Synth 8-3295] tying undriven pin spi:enable to constant 0 [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:124]
-WARNING: [Synth 8-3295] tying undriven pin spi:cont to constant 0 [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:124]
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 472.941 ; gain = 182.758
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 498.953 ; gain = 208.035
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 472.941 ; gain = 182.758
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 498.953 ; gain = 208.035
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -93,12 +81,6 @@ INFO: [Project 1-570] Preparing netlist for logic optimization
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc]
-WARNING: [Vivado 12-584] No ports matched 'JA[7]'. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc:100]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc:100]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'JA[8]'. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc:101]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc:101]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/constrs_1/new/nexys 4 DDR.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/top_level_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/top_level_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
@@ -107,24 +89,27 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 830.340 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 849.195 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_saved_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_saved_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_data_reg[0]" won't be mapped to RAM because it is too sparse
@@ -221,11 +206,9 @@ INFO: [Synth 8-5546] ROM "next_data_reg[90]" won't be mapped to RAM because it i
 INFO: [Synth 8-5546] ROM "next_data_reg[91]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_data_reg[92]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_data_reg[93]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_data_reg[94]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_data_reg[95]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_data_reg[96]" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'spi_quad_master'
+INFO: [Synth 8-5545] ROM "clk_ratio" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -237,7 +220,7 @@ INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address si
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'spi_quad_master'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:20 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:25 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -258,8 +241,7 @@ Detailed RTL Component Info :
 	   2 Input      4 Bit       Adders := 4     
 	   2 Input      3 Bit       Adders := 1     
 +---Registers : 
-	               32 Bit    Registers := 1     
-	               31 Bit    Registers := 1     
+	               32 Bit    Registers := 2     
 	               10 Bit    Registers := 1     
 	                9 Bit    Registers := 1     
 	                8 Bit    Registers := 261   
@@ -269,30 +251,33 @@ Detailed RTL Component Info :
 	                3 Bit    Registers := 1     
 	                1 Bit    Registers := 16    
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 3     
 	   4 Input     32 Bit        Muxes := 1     
-	   2 Input     16 Bit        Muxes := 1     
-	   8 Input     16 Bit        Muxes := 1     
+	  11 Input     16 Bit        Muxes := 1     
 	   2 Input     10 Bit        Muxes := 3     
-	   2 Input      8 Bit        Muxes := 15    
-	   8 Input      8 Bit        Muxes := 1     
-	   4 Input      8 Bit        Muxes := 3     
+	  13 Input      8 Bit        Muxes := 5     
+	  11 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 17    
+	   7 Input      8 Bit        Muxes := 1     
+	   4 Input      8 Bit        Muxes := 2     
 	   2 Input      7 Bit        Muxes := 4     
 	   2 Input      6 Bit        Muxes := 5     
 	   4 Input      6 Bit        Muxes := 1     
 	   2 Input      5 Bit        Muxes := 2     
-	   2 Input      4 Bit        Muxes := 4     
-	   4 Input      4 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 5     
+	   2 Input      4 Bit        Muxes := 6     
+	   5 Input      4 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 7     
 	   3 Input      3 Bit        Muxes := 1     
+	  13 Input      3 Bit        Muxes := 1     
+	  11 Input      2 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
-	  10 Input      2 Bit        Muxes := 1     
 	  13 Input      2 Bit        Muxes := 1     
 	   2 Input      1 Bit        Muxes := 356   
-	   8 Input      1 Bit        Muxes := 1     
-	  10 Input      1 Bit        Muxes := 259   
-	  16 Input      1 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 3     
+	  13 Input      1 Bit        Muxes := 258   
+	  21 Input      1 Bit        Muxes := 1     
 	   4 Input      1 Bit        Muxes := 27    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
@@ -329,22 +314,24 @@ Detailed RTL Component Info :
 	                8 Bit    Registers := 257   
 	                4 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input     16 Bit        Muxes := 1     
-	   8 Input     16 Bit        Muxes := 1     
-	   2 Input      8 Bit        Muxes := 2     
-	   8 Input      8 Bit        Muxes := 1     
-	   4 Input      8 Bit        Muxes := 1     
-	   2 Input      4 Bit        Muxes := 1     
-	   4 Input      4 Bit        Muxes := 1     
+	  11 Input     16 Bit        Muxes := 1     
+	  13 Input      8 Bit        Muxes := 5     
+	  11 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 4     
+	   7 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 3     
+	   5 Input      4 Bit        Muxes := 1     
+	   3 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 3     
 	   3 Input      3 Bit        Muxes := 1     
-	   2 Input      3 Bit        Muxes := 1     
+	  13 Input      3 Bit        Muxes := 1     
+	  11 Input      2 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
-	  10 Input      2 Bit        Muxes := 1     
+	  11 Input      1 Bit        Muxes := 3     
 	   2 Input      1 Bit        Muxes := 259   
-	   8 Input      1 Bit        Muxes := 1     
-	  10 Input      1 Bit        Muxes := 259   
-	  16 Input      1 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 258   
+	  21 Input      1 Bit        Muxes := 1     
 Module spi_quad_master 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -353,13 +340,12 @@ Detailed RTL Component Info :
 	   2 Input      6 Bit       Adders := 6     
 	   2 Input      5 Bit       Adders := 3     
 +---Registers : 
-	               32 Bit    Registers := 1     
-	               31 Bit    Registers := 1     
+	               32 Bit    Registers := 2     
 	                8 Bit    Registers := 3     
 	                6 Bit    Registers := 2     
 	                1 Bit    Registers := 8     
 +---Muxes : 
-	   2 Input     32 Bit        Muxes := 2     
+	   2 Input     32 Bit        Muxes := 3     
 	   4 Input     32 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 13    
 	   4 Input      8 Bit        Muxes := 2     
@@ -387,34 +373,22 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
 WARNING: [Synth 8-6014] Unused sequential element uart/rx_error_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd:82]
-WARNING: [Synth 8-6014] Unused sequential element spi/busy_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:57]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[7]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[6]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[5]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[4]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[3]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[2]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[1]
-WARNING: [Synth 8-3331] design flash_logic has unconnected port SPI_data_in[0]
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/continue_reg )
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[0]' (FDE) to 'spi/last_bit_rx_reg[4]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[0]' (FDE) to 'spi/slave_reg[0]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[1]' (FDE) to 'spi/slave_reg[0]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[2]' (FDE) to 'spi/slave_reg[0]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/rw_buffer_reg )
-INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[0]' (FDE) to 'spi/last_bit_rx_reg[4]'
-INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[1]' (FDE) to 'spi/last_bit_rx_reg[4]'
-INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[2]' (FDE) to 'spi/last_bit_rx_reg[4]'
+INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[0]' (FDE) to 'spi/last_bit_rx_reg[1]'
+INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[1]' (FDE) to 'spi/last_bit_rx_reg[2]'
+INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[2]' (FDE) to 'spi/last_bit_rx_reg[3]'
 INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[3]' (FDE) to 'spi/last_bit_rx_reg[4]'
-INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[4]' (FDE) to 'spi/clk_ratio_reg[3]'
-INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[5]' (FDE) to 'spi/slave_reg[0]'
-INFO: [Synth 8-3886] merging instance 'spi/cmd_only_buffer_reg' (FDE) to 'spi/slave_reg[0]'
-INFO: [Synth 8-3886] merging instance 'spi/slave_reg[0]' (FDE) to 'spi/clk_ratio_reg[5]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[3]' (FDE) to 'spi/clk_ratio_reg[4]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/clk_ratio_reg[4] )
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[5]' (FDE) to 'spi/clk_ratio_reg[6]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\spi/last_bit_rx_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/last_bit_rx_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_only_buffer_reg )
+INFO: [Synth 8-3886] merging instance 'spi/slave_reg[0]' (FDE) to 'spi/clk_ratio_reg[4]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[3]' (FDE) to 'spi/clk_ratio_reg[6]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[4]' (FDE) to 'spi/clk_ratio_reg[5]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[5]' (FDE) to 'spi/clk_ratio_reg[8]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[6]' (FDE) to 'spi/clk_ratio_reg[7]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[7]' (FDE) to 'spi/clk_ratio_reg[8]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\spi/clk_ratio_reg[7] )
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[8]' (FDE) to 'spi/clk_ratio_reg[9]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[9]' (FDE) to 'spi/clk_ratio_reg[10]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[10]' (FDE) to 'spi/clk_ratio_reg[11]'
@@ -437,58 +411,17 @@ INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[26]' (FDE) to 'spi/clk_
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[27]' (FDE) to 'spi/clk_ratio_reg[28]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[28]' (FDE) to 'spi/clk_ratio_reg[29]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[29]' (FDE) to 'spi/clk_ratio_reg[30]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/clk_ratio_reg[30] )
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (flasher/\saved_state_reg[0] )
-INFO: [Synth 8-3886] merging instance 'flasher/saved_state_reg[1]' (FDRE) to 'flasher/saved_state_reg[3]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (flasher/\saved_state_reg[3] )
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[30]' (FDE) to 'spi/cmd_buffer_reg[1]'
-INFO: [Synth 8-3886] merging instance 'spi/cmd_buffer_reg[0]' (FDE) to 'spi/cmd_buffer_reg[1]'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[1] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[3] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[4] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[6] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/cmd_buffer_reg[7] )
-INFO: [Synth 8-3886] merging instance 'i_7' (FDCE) to 'i_5'
-INFO: [Synth 8-3886] merging instance 'spi/sdio_3_retimed_reg' (FDE) to 'spi/sdio_2_retimed_reg'
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/sdio_2_retimed_reg )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/sdio_1_retimed_reg )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/sdio_retimed_reg )
-WARNING: [Synth 8-3332] Sequential element (saved_state_reg[3]) is unused and will be removed from module flash_logic.
-WARNING: [Synth 8-3332] Sequential element (saved_state_reg[0]) is unused and will be removed from module flash_logic.
-WARNING: [Synth 8-3332] Sequential element (spi/sdio_1_retimed_reg) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/sdio_retimed_reg) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/sdio_2_retimed_reg) is unused and will be removed from module top_level.
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[30]' (FDE) to 'spi/clk_ratio_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/clk_ratio_reg[31] )
 WARNING: [Synth 8-3332] Sequential element (uart/rx_buffer_reg[0]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/continue_reg) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rw_buffer_reg) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[7]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[6]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[5]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[4]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[3]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[2]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[7]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[6]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[5]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[4]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[3]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[2]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[1]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/d_buffer_reg[0]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[7]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[6]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[5]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[4]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[3]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[2]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[1]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/rx_data_reg[0]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[4]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/cmd_buffer_reg[1]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/last_bit_rx_reg[5]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/last_bit_rx_reg[4]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[7]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/cmd_only_buffer_reg) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[31]) is unused and will be removed from module top_level.
+INFO: [Synth 8-3886] merging instance 'i_7' (FDCE) to 'i_5'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:38 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -500,13 +433,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:39 . Memory (MB): peak = 830.340 ; gain = 540.156
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:38 ; elapsed = 00:00:47 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:40 . Memory (MB): peak = 837.125 ; gain = 546.941
+Finished Timing Optimization : Time (s): cpu = 00:00:40 ; elapsed = 00:00:49 . Memory (MB): peak = 849.195 ; gain = 558.277
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -518,7 +451,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:36 ; elapsed = 00:00:42 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:51 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -542,7 +475,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished IO Insertion : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -555,7 +488,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:43 ; elapsed = 00:00:52 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -567,25 +500,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -602,54 +535,55 @@ Report Cell Usage:
 |      |Cell   |Count |
 +------+-------+------+
 |1     |BUFG   |     1|
-|2     |CARRY4 |    11|
-|3     |LUT1   |     7|
-|4     |LUT2   |    55|
-|5     |LUT3   |    25|
-|6     |LUT4   |    73|
-|7     |LUT5   |   254|
-|8     |LUT6   |   877|
-|9     |MUXF7  |   273|
-|10    |MUXF8  |   128|
-|11    |FDCE   |    63|
-|12    |FDPE   |     6|
-|13    |FDRE   |  2138|
-|14    |FDSE   |     2|
+|2     |CARRY4 |    17|
+|3     |LUT1   |     8|
+|4     |LUT2   |    91|
+|5     |LUT3   |    83|
+|6     |LUT4   |    82|
+|7     |LUT5   |   141|
+|8     |LUT6   |   901|
+|9     |MUXF7  |   240|
+|10    |MUXF8  |   120|
+|11    |FDCE   |    45|
+|12    |FDPE   |     7|
+|13    |FDRE   |  2169|
+|14    |FDSE   |     3|
 |15    |IBUF   |     3|
-|16    |OBUF   |    19|
-|17    |OBUFT  |     4|
+|16    |IOBUF  |     4|
+|17    |OBUF   |    19|
 +------+-------+------+
 
 Report Instance Areas: 
 +------+----------+----------------+------+
 |      |Instance  |Module          |Cells |
 +------+----------+----------------+------+
-|1     |top       |                |  3939|
-|2     |  flasher |flash_logic     |  3677|
-|3     |  spi     |spi_quad_master |   103|
-|4     |  uart    |uart            |   126|
+|1     |top       |                |  3934|
+|2     |  flasher |flash_logic     |  3523|
+|3     |  spi     |spi_quad_master |   282|
+|4     |  uart    |uart            |    96|
 +------+----------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:43 . Memory (MB): peak = 851.473 ; gain = 561.289
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 42 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:27 ; elapsed = 00:00:36 . Memory (MB): peak = 851.473 ; gain = 203.891
-Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 851.473 ; gain = 561.289
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:31 ; elapsed = 00:00:44 . Memory (MB): peak = 861.816 ; gain = 220.656
+Synthesis Optimization Complete : Time (s): cpu = 00:00:43 ; elapsed = 00:00:53 . Memory (MB): peak = 861.816 ; gain = 570.898
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 415 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 384 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'top_level' is not ideal for floorplanning, since the cellview 'flash_logic' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 4 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-183 Infos, 61 Warnings, 2 Critical Warnings and 0 Errors encountered.
+166 Infos, 12 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:46 . Memory (MB): peak = 851.473 ; gain = 573.410
+synth_design: Time (s): cpu = 00:00:45 ; elapsed = 00:00:56 . Memory (MB): peak = 861.816 ; gain = 583.207
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1/top_level.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.063 . Memory (MB): peak = 851.473 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Sun Sep 15 15:18:37 2019...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.068 . Memory (MB): peak = 861.816 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Sep 15 19:57:33 2019...

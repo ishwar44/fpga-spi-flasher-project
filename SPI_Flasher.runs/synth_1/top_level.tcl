@@ -18,6 +18,7 @@ proc create_report { reportName command } {
   }
 }
 set_param xicom.use_bs_reader 1
+set_msg_config -id {Common 17-41} -limit 10000000
 create_project -in_memory -part xc7a100tcsg324-1
 
 set_param project.singleFileAddWarning.threshold 0
@@ -32,12 +33,12 @@ set_property board_part digilentinc.com:nexys4_ddr:part0:1.1 [current_project]
 set_property ip_output_repo e:/workspace/SPI_Flasher/SPI_Flasher.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 read_vhdl -library xil_defaultlib {
-  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd
-  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd
-  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/std_logic_textio.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/util.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd
 }
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the

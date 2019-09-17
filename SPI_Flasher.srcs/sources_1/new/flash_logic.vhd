@@ -65,7 +65,7 @@ architecture Behavioral of flash_logic is
 type byte_arr is array (0 to 255) of std_logic_vector(7 downto 0);
 constant Number_of_Address_Bytes: positive := n_bits(memory_size-1)/8;
 type address_bytes is array (0 to Number_of_Address_Bytes) of unsigned(7 downto 0);
-type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status);
+type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status,set_dual_mode,set_quad_mode);
 signal state,next_state,saved_state,next_saved_state: state_type:= uart_welecome; -- current and next state
 constant Hello_msg : String (1 to 12) := "Hello,World!";
 
@@ -84,9 +84,17 @@ signal next_data : byte_arr := (others => (others => '0'));
 signal current_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
 signal next_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
 
+signal current_spi_mode : std_logic_vector(1 downto 0) := (others => '0');
+signal next_spi_mode : std_logic_vector(1 downto 0) := (others => '0');
+
+signal current_dummy_bytes : positive := 1;
+signal next_dummy_bytes : positive := 1;
+
 constant write_ins : std_logic_vector(7 downto 0) := "00000010";
 constant read_ins : std_logic_vector(7 downto 0) := "00000011";
-
+constant dual_ins : std_logic_vector(7 downto 0) := "00111011";
+constant quad_ins : std_logic_vector(7 downto 0) := "00111000";
+constant reset_ins : std_logic_vector(7 downto 0) := "11111111";
 begin
 
 SYNC_PROC: process (clk) 
@@ -100,6 +108,8 @@ SYNC_PROC: process (clk)
         current_address <= (others => (others => '0'));
         current_data <= (others => (others => '0'));
         current_num_bytes <= to_unsigned(4,8);
+        current_spi_mode <= (others => '0');
+        current_dummy_bytes <= 1;
       else
         state <= next_state;
         current_index <= next_index;
@@ -108,12 +118,14 @@ SYNC_PROC: process (clk)
         current_address <= next_address;
         current_data <= next_data;
         current_num_bytes <= next_num_bytes;
+        current_spi_mode <= next_spi_mode;
+        current_dummy_bytes <= next_dummy_bytes;
       end if;
     end if;
   end process;
 
 
-  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug)
+  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes)
   begin
     uart_tx_en <= '0';
     uart_tx_data <= (others => '0');
@@ -122,7 +134,7 @@ SYNC_PROC: process (clk)
     cont_spi <= '0';
     SPI_CMD_out <= (others => '0');
     SPI_data_out <= (others => '0');
-    mode_sel <= (others => '0');
+    mode_sel <= current_spi_mode;
     cmd_only <= '0';
     SPI_ena <= '0';
     case (state) is
@@ -211,7 +223,16 @@ SYNC_PROC: process (clk)
          else
              uart_tx_en <= '0';
          end if;
-        
+      
+      when set_dual_mode =>
+        cmd_only <= '1';
+        SPI_CMD_out <= dual_ins;
+        SPI_ena <= '1';
+      
+      when set_quad_mode =>
+        cmd_only <= '1';
+        SPI_CMD_out <= quad_ins;
+        SPI_ena <= '1';
       
       when others => 
          uart_tx_en <= '0';
@@ -220,7 +241,7 @@ SYNC_PROC: process (clk)
   end process;
 
 
-  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug)
+  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes)
   begin
   
     next_state <= state;
@@ -230,6 +251,8 @@ SYNC_PROC: process (clk)
     next_address <= current_address;
     next_data <= current_data;
     next_num_bytes <= current_num_bytes;
+    next_spi_mode <= current_spi_mode;
+    next_dummy_bytes <= current_dummy_bytes;
     case (state) is
       when wait_for_clock =>
         next_state <= saved_state;
@@ -294,9 +317,9 @@ SYNC_PROC: process (clk)
         elsif (current_uart_data = "01111000") then  -- x to get the status of the flaher on the uart
             next_state <= get_status;
         elsif (current_uart_data = "01100100") then  -- d to put the memory and SPI port into dual SPI mode
-        
+            next_state <= set_dual_mode;
         elsif (current_uart_data = "01110001") then  -- q to put the memory and SPI port into quad SPI mode
-        
+            next_state <= set_quad_mode;
         else
             next_state <= wait_for_uart_cmd;
         end if;
@@ -396,10 +419,10 @@ SYNC_PROC: process (clk)
         
      when read_from_start_data =>
         if(SPI_busy = '0') then
-            if(current_index > 0) then
-                next_data(to_integer(current_index-1)) <= SPI_data_in;
-            end if;
-           if(current_index = current_num_bytes ) then
+           if(current_index > current_dummy_bytes - 1) then
+            next_data(to_integer(current_index)-current_dummy_bytes) <= SPI_data_in;
+           end if;
+           if(current_index = current_num_bytes + current_dummy_bytes - 1 ) then
               next_index <= (others => '0');
               next_state <= send_uart_data; -- this is for debug purposes 
            else
@@ -439,7 +462,23 @@ SYNC_PROC: process (clk)
         else            
             next_state <= get_status;
         end if;
-        
+     
+     when set_dual_mode =>
+        if(SPI_busy = '0') then
+            next_spi_mode <= "01";
+            next_state <= wait_for_uart_cmd;
+        else
+            next_state <= set_dual_mode;
+        end if;
+     
+      when set_quad_mode =>
+       next_dummy_bytes <= 2;
+       if(SPI_busy = '0') then
+           next_spi_mode <= "10";
+           next_state <= wait_for_uart_cmd;
+       else
+           next_state <= set_dual_mode;
+       end if;
         
      when send_to_spi =>
         

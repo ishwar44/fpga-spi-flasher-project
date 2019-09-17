@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date         : Tue Sep 17 20:29:45 2019
+| Date         : Wed Sep 18 00:42:52 2019
 | Host         : Ishwar running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file top_level_control_sets_placed.rpt
 | Design       : top_level
@@ -23,7 +23,7 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Number of unique control sets                            |   275 |
+| Number of unique control sets                            |   274 |
 | Unused register locations in slices containing registers |    18 |
 +----------------------------------------------------------+-------+
 
@@ -34,7 +34,8 @@ Table of Contents
 +--------+--------------+
 | Fanout | Control Sets |
 +--------+--------------+
-|      8 |            5 |
+|      8 |            3 |
+|     10 |            1 |
 |     14 |            1 |
 |    16+ |          269 |
 +--------+--------------+
@@ -46,296 +47,295 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              18 |            7 |
-| No           | No                    | Yes                    |              58 |           15 |
-| No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |              86 |           21 |
-| Yes          | No                    | Yes                    |              48 |            5 |
-| Yes          | Yes                   | No                     |            4292 |          789 |
+| No           | No                    | No                     |              28 |           10 |
+| No           | No                    | Yes                    |              58 |           16 |
+| No           | Yes                   | No                     |               8 |            2 |
+| Yes          | No                    | No                     |              78 |           19 |
+| Yes          | No                    | Yes                    |              48 |            9 |
+| Yes          | Yes                   | No                     |            4298 |          872 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------+---------------------------------------+------------------------------------+------------------+----------------+
-|  Clock Signal  |             Enable Signal             |          Set/Reset Signal          | Slice Load Count | Bel Load Count |
-+----------------+---------------------------------------+------------------------------------+------------------+----------------+
-|  clk_IBUF_BUFG | flasher/E[0]                          | flasher/current_uart_data_reg[0]_0 |                1 |              8 |
-|  clk_IBUF_BUFG | flasher/state[3]_i_2_n_0              | flasher/current_uart_data_reg[0]_0 |                4 |              8 |
-|  clk_IBUF_BUFG | flasher/count0                        |                                    |                3 |              8 |
-|  clk_IBUF_BUFG | uart/rx_count0                        | flasher/current_uart_data_reg[0]_0 |                1 |              8 |
-|  clk_IBUF_BUFG | flasher/saved_state[3]_i_1_n_0        | flasher/current_uart_data_reg[0]_0 |                2 |              8 |
-|  clk_IBUF_BUFG | spi/clk_toggles0                      |                                    |                4 |             14 |
-|  clk_IBUF_BUFG | flasher/current_data[87][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | uart/tx_buffer[8]_i_1_n_0             |                                    |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[44][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[46][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[47][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[54][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[56][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[45][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[60][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[42][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[51][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[52][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[41][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[53][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[61][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[62][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[40][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[57][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[43][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[63][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[50][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[55][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[49][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[4][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[58][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[59][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[64][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[5][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[48][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[71][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[67][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[75][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[8][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[88][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_num_bytes[7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[72][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[83][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[85][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[90][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[69][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[79][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[68][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[65][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[76][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[6][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[77][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[7][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[80][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[81][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[84][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[66][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[70][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[73][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[78][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[82][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[86][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[89][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[74][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[99][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                7 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[92][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[93][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                7 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[95][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[91][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[98][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[94][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                7 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[9][7]_i_1_n_0    | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[97][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[96][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | uart/rx_data0                         | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_uart_data[7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/next_data[0]_2                | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/next_data[1]_1                | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/next_data[3]_3                | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/next_data[2]_0                | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[106][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[121][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[114][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[104][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[117][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[103][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[107][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[10][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[113][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[100][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[110][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[116][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[112][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[115][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[118][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[119][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[11][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[120][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[102][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[105][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[101][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[108][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[109][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[111][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[128][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[131][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[122][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[132][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[135][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[138][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[139][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[140][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[147][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[148][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[146][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[142][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[149][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[126][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[127][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[134][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[141][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                7 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[123][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[133][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[129][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[13][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[144][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[137][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[145][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[136][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[143][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[124][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[12][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[130][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[125][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[154][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[177][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[171][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[178][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[169][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[179][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[17][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[168][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[158][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[173][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[150][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[163][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[152][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[170][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[175][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                7 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[151][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[155][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[159][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[156][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[160][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[157][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[164][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[165][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[161][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[166][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[15][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[14][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[167][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[162][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[16][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[172][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[174][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[176][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[153][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[19][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[191][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[18][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[200][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[202][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[199][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[201][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[195][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[192][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[182][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[188][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[186][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[189][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[180][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[181][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[193][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[196][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[184][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[190][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[185][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[187][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[197][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[198][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[194][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[183][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[208][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[218][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[214][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[228][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[229][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[203][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[223][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[219][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[222][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[22][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[230][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[231][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[205][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[211][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[232][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[212][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[206][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[20][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[216][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[217][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[210][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[221][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[21][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[220][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[207][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[224][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[226][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[213][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[209][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[225][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[215][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[227][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[204][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[233][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[28][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[236][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[29][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[239][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                6 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[30][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                8 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[253][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[31][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[237][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[23][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[246][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[26][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[248][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[24][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[240][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[235][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[242][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[238][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[243][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[244][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[254][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[255][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[25][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[241][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[249][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                5 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[252][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[245][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[251][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[250][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[234][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[27][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[247][7]_i_1_n_0  | flasher/current_uart_data_reg[0]_0 |                1 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[35][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[38][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[37][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[36][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[33][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                3 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[34][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                4 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[39][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | flasher/current_data[32][7]_i_1_n_0   | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | spi/cmd_buffer0                       |                                    |                4 |             16 |
-|  clk_IBUF_BUFG | spi/d_buffer0                         |                                    |                3 |             16 |
-|  clk_IBUF_BUFG | spi/rx_data[7]_i_1_n_0                | flasher/current_uart_data_reg[0]_0 |                2 |             16 |
-|  clk_IBUF_BUFG | uart/rx_buffer0                       |                                    |                1 |             16 |
-|  clk_IBUF_BUFG |                                       |                                    |                7 |             18 |
-|  clk_IBUF_BUFG | flasher/current_index[7]_i_1_n_0      | flasher/current_uart_data_reg[0]_0 |                8 |             44 |
-|  clk_IBUF_BUFG | flasher/current_address[2][7]_i_1_n_0 | flasher/current_uart_data_reg[0]_0 |                6 |             48 |
-|  clk_IBUF_BUFG | flasher/count0                        | spi/count[31]_i_1_n_0              |                8 |             56 |
-|  clk_IBUF_BUFG |                                       | flasher/current_uart_data_reg[0]_0 |               15 |             58 |
-+----------------+---------------------------------------+------------------------------------+------------------+----------------+
++----------------+--------------------------------------+-----------------------------------+------------------+----------------+
+|  Clock Signal  |             Enable Signal            |          Set/Reset Signal         | Slice Load Count | Bel Load Count |
++----------------+--------------------------------------+-----------------------------------+------------------+----------------+
+|  clk_IBUF_BUFG | flasher/saved_state[3]_i_1_n_0       | flasher/current_spi_mode_reg[0]_0 |                2 |              8 |
+|  clk_IBUF_BUFG | flasher/E[0]                         | flasher/current_spi_mode_reg[0]_0 |                1 |              8 |
+|  clk_IBUF_BUFG | uart/rx_count0                       | flasher/current_spi_mode_reg[0]_0 |                1 |              8 |
+|  clk_IBUF_BUFG | flasher/state[4]_i_2_n_0             | flasher/current_spi_mode_reg[0]_0 |                4 |             10 |
+|  clk_IBUF_BUFG | spi/clk_toggles0                     |                                   |                5 |             14 |
+|  clk_IBUF_BUFG | flasher/current_num_bytes[7]_i_1_n_0 | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/current_uart_data[7]_i_1_n_0 | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[149]_170           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[106]_199           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[14]_29             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[152]_167           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[123]_188           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[0]_93              | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[116]_193           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[142]_174           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[153]_166           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[117]_192           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[120]_189           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[103]_202           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[104]_201           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[124]_23            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[132]_183           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[127]_185           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[13]_30             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[100]_205           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[109]_197           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[11]_248            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[129]_2             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[107]_198           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[121]_61            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[139]_176           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[140]_22            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[141]_175           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[144]_173           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[108]_32            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[10]_249            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[187]_137           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[105]_200           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[114]_4             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[122]_60            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[113]_194           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[126]_186           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[128]_3             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[133]_182           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[137]_178           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[138]_177           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[145]_172           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[119]_190           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[143]_21            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[130]_1             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[110]_25            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[111]_196           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[135]_180           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[136]_179           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[146]_0             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[147]_10            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[148]_171           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[150]_169           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[151]_168           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[115]_64            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[102]_203           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[118]_191           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[125]_187           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[12]_31             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[131]_184           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[101]_204           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[134]_181           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[174]_148           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[186]_59            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[1]_94              | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[205]_37            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[155]_164           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[162]_20            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[170]_152           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[172]_150           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[171]_151           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[181]_142           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[156]_33            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[163]_6             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[173]_149           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[180]_143           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[192]_132           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[179]_144           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[158]_162           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[15]_247            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[166]_156           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[165]_157           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[191]_133           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[184]_139           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[193]_52            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[195]_16            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[19]_244            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[178]_9             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[182]_141           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[185]_138           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[167]_155           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[169]_153           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[176]_146           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[18]_11             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[194]_46            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[196]_42            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[198]_40            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[168]_154           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[190]_134           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[199]_41            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[200]_47            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[201]_51            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[154]_165           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[161]_159           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[203]_49            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[204]_43            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[206]_38            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[188]_136           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[175]_147           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[159]_161           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[189]_135           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[202]_39            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[207]_50            | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[208]_131           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[160]_160           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[177]_145           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[16]_246            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[209]_130           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[20]_243            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[210]_129           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[17]_245            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[183]_140           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[197]_90            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[164]_158           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[157]_163           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[33]_8              | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[34]_7              | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[236]_109           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[35]_234            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[36]_70             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[37]_71             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[28]_28             | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[38]_68             | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[223]_119           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[212]_128           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[243]_103           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[218]_123           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[229]_88            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[22]_241            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[211]_15            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[221]_121           | flasher/current_spi_mode_reg[0]_0 |                7 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[235]_110           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[224]_118           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[220]_35            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[237]_108           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[239]_106           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[234]_111           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[215]_126           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[241]_104           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[242]_63            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[246]_91            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[247]_100           | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[213]_127           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[216]_125           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[21]_242            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[23]_65             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[244]_102           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[219]_122           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[225]_117           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[228]_115           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[227]_116           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[238]_107           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[240]_105           | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[248]_99            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[249]_98            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[255]_95            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[25]_239            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[26]_238            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[27]_237            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[217]_124           | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[233]_112           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[251]_62            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[24]_240            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[253]_96            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[254]_24            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[252]_34            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[29]_236            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[30]_235            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[232]_113           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[2]_17              | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[250]_97            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[230]_89            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[31]_87             | flasher/current_spi_mode_reg[0]_0 |                7 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[32]_67             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[226]_5             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[214]_92            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[231]_114           | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[222]_120           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[245]_101           | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[6]_253             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[40]_72             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[75]_48             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[52]_57             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[78]_44             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[79]_223            | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[71]_225            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[86]_217            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[65]_230            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[72]_224            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[7]_252             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[39]_74             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[56]_77             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[57]_82             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[46]_69             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[42]_85             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[55]_66             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[60]_80             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[67]_55             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[73]_54             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[68]_228            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[44]_27             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[62]_84             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[74]_53             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[77]_45             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[50]_18             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[81]_221            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[66]_229            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[3]_12              | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[80]_222            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[82]_220            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[61]_76             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[76]_26             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[83]_14             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[43]_233            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[85]_218            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[84]_219            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[5]_254             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[87]_216            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[88]_215            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[89]_214            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[90]_213            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[91]_212            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[4]_255             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[59]_75             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[69]_227            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[8]_251             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[92]_36             | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[93]_211            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[70]_226            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[94]_210            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[54]_232            | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[95]_209            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[96]_208            | flasher/current_spi_mode_reg[0]_0 |                1 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[64]_231            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[53]_78             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[51]_13             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[47]_79             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[45]_73             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[48]_83             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[49]_56             | flasher/current_spi_mode_reg[0]_0 |                5 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[58]_58             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[41]_86             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[63]_81             | flasher/current_spi_mode_reg[0]_0 |                6 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[99]_206            | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[9]_250             | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[97]_207            | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[98]_19             | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | spi/cmd_buffer0                      |                                   |                4 |             16 |
+|  clk_IBUF_BUFG | spi/d_buffer0                        |                                   |                3 |             16 |
+|  clk_IBUF_BUFG | spi/rx_data[7]_i_1__0_n_0            | flasher/current_spi_mode_reg[0]_0 |                4 |             16 |
+|  clk_IBUF_BUFG | uart/rx_data0                        | flasher/current_spi_mode_reg[0]_0 |                3 |             16 |
+|  clk_IBUF_BUFG | flasher/next_data[112]_195           | flasher/current_spi_mode_reg[0]_0 |                2 |             16 |
+|  clk_IBUF_BUFG | uart/tx_buffer[8]_i_1_n_0            |                                   |                5 |             16 |
+|  clk_IBUF_BUFG | uart/rx_buffer[8]_i_1_n_0            |                                   |                2 |             16 |
+|  clk_IBUF_BUFG |                                      |                                   |               10 |             28 |
+|  clk_IBUF_BUFG | flasher/current_index[7]_i_1_n_0     | flasher/current_spi_mode_reg[0]_0 |                8 |             48 |
+|  clk_IBUF_BUFG | flasher/next_address[2]_256          | flasher/current_spi_mode_reg[0]_0 |                6 |             48 |
+|  clk_IBUF_BUFG | spi/count0_0                         | spi/clk_toggles0                  |                8 |             56 |
+|  clk_IBUF_BUFG |                                      | flasher/current_spi_mode_reg[0]_0 |               18 |             66 |
++----------------+--------------------------------------+-----------------------------------+------------------+----------------+
 
 

@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Wed Sep 18 00:40:34 2019
-# Process ID: 2292
+# Start of session at: Sun Sep 22 19:26:43 2019
+# Process ID: 4672
 # Current directory: E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1
 # Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
 # Log file: E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1/top_level.vds

@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:03:12 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Wed Sep 18 00:40:34 2019
-# Process ID: 2292
+# Start of session at: Sun Sep 22 19:26:43 2019
+# Process ID: 4672
 # Current directory: E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1
 # Command line: vivado.exe -log top_level.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source top_level.tcl
 # Log file: E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1/top_level.vds
@@ -20,9 +20,9 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 20280 
+INFO: Helper process launched with PID 17412 
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 387.891 ; gain = 97.039
+Starting RTL Elaboration : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 387.672 ; gain = 97.520
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'top_level' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:56]
 	Parameter clk_freq bound to: 100000000 - type: integer 
@@ -44,8 +44,8 @@ INFO: [Synth 8-638] synthesizing module 'flash_logic' [E:/workspace/SPI_Flasher/
 	Parameter uart_data_width bound to: 8 - type: integer 
 	Parameter spi_data_width bound to: 8 - type: integer 
 	Parameter spi_cmd_width bound to: 8 - type: integer 
-	Parameter memory_size bound to: 131072 - type: integer 
-WARNING: [Synth 8-614] signal 'SPI_data_in' is read in the process but is not in the sensitivity list [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:244]
+	Parameter memory_size bound to: 32768 - type: integer 
+WARNING: [Synth 8-614] signal 'SPI_data_in' is read in the process but is not in the sensitivity list [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:263]
 INFO: [Synth 8-256] done synthesizing module 'flash_logic' (2#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd:64]
 INFO: [Synth 8-638] synthesizing module 'spi_quad_master' [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:38]
 	Parameter cpol bound to: 1'b0 
@@ -56,7 +56,7 @@ INFO: [Synth 8-638] synthesizing module 'spi_quad_master' [E:/workspace/SPI_Flas
 INFO: [Synth 8-256] done synthesizing module 'spi_quad_master' (3#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/SPI.vhd:38]
 INFO: [Synth 8-256] done synthesizing module 'top_level' (4#1) [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd:56]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 514.695 ; gain = 223.844
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 533.789 ; gain = 243.637
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -69,10 +69,10 @@ Report Check Netlist:
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 514.695 ; gain = 223.844
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 533.789 ; gain = 243.637
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 514.695 ; gain = 223.844
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:08 . Memory (MB): peak = 533.789 ; gain = 243.637
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a100tcsg324-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -88,28 +88,24 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 862.590 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 877.063 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tcsg324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:21 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:15 ; elapsed = 00:00:19 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5546] ROM "rw" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5587] ROM size for "cont_spi" is below threshold of ROM address width. It will be mapped to LUTs
-INFO: [Synth 8-5546] ROM "SPI_CMD_out" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "cmd_only" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5587] ROM size for "SPI_ena" is below threshold of ROM address width. It will be mapped to LUTs
+INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too sparse
@@ -118,7 +114,6 @@ INFO: [Synth 8-5546] ROM "next_state" won't be mapped to RAM because it is too s
 INFO: [Synth 8-5546] ROM "next_saved_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_saved_state" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_saved_state" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "next_index" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "next_data_reg[0]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[0]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "next_data_reg[1]" won't be mapped to RAM because it is too sparse
@@ -127,178 +122,181 @@ INFO: [Synth 8-5546] ROM "next_data_reg[2]" won't be mapped to RAM because it is
 INFO: [Synth 8-5545] ROM "next_data_reg[2]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5546] ROM "next_data_reg[3]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[3]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[4]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[4]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[5]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[4]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[5]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[6]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[5]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[6]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[7]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[6]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[7]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[8]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[7]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[8]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[9]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[8]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[9]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[10]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[9]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[10]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[11]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[10]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[11]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[12]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[11]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[12]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[13]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[12]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[13]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[14]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[13]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[14]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[15]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[14]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[15]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[16]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[15]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[16]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[17]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[16]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[17]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[18]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[17]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[18]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[19]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[18]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[19]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[20]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[19]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[20]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[21]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[20]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[21]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[22]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[21]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[22]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[23]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[22]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[23]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[24]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[23]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[24]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[25]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[24]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[25]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[26]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[25]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[26]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[27]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[26]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[27]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[28]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[27]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[28]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[29]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[28]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[29]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[30]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[29]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[30]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[31]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[30]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[31]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[32]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[31]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[32]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[33]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[32]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[33]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[34]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[33]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[34]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[35]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[34]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[35]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[36]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[35]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[36]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[37]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[36]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[37]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[38]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[37]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[38]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[39]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[38]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[39]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[40]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[39]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[40]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[41]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[40]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[41]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[42]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[41]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[42]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[43]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[42]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[43]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[44]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[43]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[44]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[45]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[44]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[45]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[46]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[45]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[46]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[47]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[46]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[47]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[48]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[47]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[48]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[49]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[48]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[49]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[50]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[49]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[50]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[51]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[50]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[51]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[52]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[51]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[52]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[53]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[52]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[53]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[54]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[53]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[54]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[55]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[54]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[55]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[56]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[55]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[56]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[57]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[56]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[57]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[58]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[57]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[58]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[59]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[58]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[59]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[60]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[59]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[60]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[61]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[60]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[61]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[62]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[61]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[62]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[63]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[62]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[63]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[64]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[63]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[64]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[65]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[64]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[65]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[66]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[65]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[66]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[67]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[66]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[67]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[68]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[67]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[68]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[69]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[68]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[69]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[70]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[69]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[70]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[71]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[70]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[71]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[72]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[71]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[72]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[73]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[72]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[73]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[74]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[73]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[74]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[75]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[74]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[75]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[76]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[75]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[76]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[77]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[76]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[77]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[78]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[77]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[78]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[79]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[78]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[79]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[80]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[79]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[80]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[81]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[80]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[81]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[82]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[81]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[82]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[83]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[82]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[83]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[84]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[83]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[84]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[85]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[84]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[85]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[86]" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "next_data_reg[85]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[86]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
-INFO: [Synth 8-5546] ROM "next_data_reg[87]" won't be mapped to RAM because it is too sparse
-INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-5546] ROM "next_data_reg[86]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[87]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "next_data_reg[87]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[88]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "next_data_reg[88]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[89]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "next_data_reg[89]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "next_data_reg[90]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
+INFO: [Synth 8-5546] ROM "next_data_reg[90]" won't be mapped to RAM because it is too sparse
+INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 INFO: [Synth 8-5545] ROM "next_data_reg[91]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "next_data_reg[92]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
 INFO: [Synth 8-5545] ROM "next_data_reg[93]" won't be mapped to RAM because address size (32) is larger than maximum supported(25)
@@ -321,7 +319,7 @@ INFO: [Synth 8-5544] ROM "state" won't be mapped to Block RAM because address si
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'spi_quad_master'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:26 ; elapsed = 00:00:35 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:27 ; elapsed = 00:00:36 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -349,7 +347,7 @@ Detailed RTL Component Info :
 	               31 Bit    Registers := 1     
 	               10 Bit    Registers := 1     
 	                9 Bit    Registers := 1     
-	                8 Bit    Registers := 265   
+	                8 Bit    Registers := 263   
 	                7 Bit    Registers := 1     
 	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 1     
@@ -362,31 +360,30 @@ Detailed RTL Component Info :
 	   4 Input     32 Bit        Muxes := 1     
 	   3 Input     16 Bit        Muxes := 1     
 	   2 Input     10 Bit        Muxes := 3     
-	   3 Input      8 Bit        Muxes := 1     
+	  21 Input      8 Bit        Muxes := 6     
 	   2 Input      8 Bit        Muxes := 20    
-	  16 Input      8 Bit        Muxes := 2     
+	  18 Input      8 Bit        Muxes := 3     
 	   4 Input      8 Bit        Muxes := 2     
 	   2 Input      7 Bit        Muxes := 4     
-	  16 Input      6 Bit        Muxes := 1     
 	   2 Input      6 Bit        Muxes := 5     
 	   4 Input      6 Bit        Muxes := 1     
-	  19 Input      5 Bit        Muxes := 1     
-	   8 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 4     
-	   2 Input      4 Bit        Muxes := 10    
-	   3 Input      4 Bit        Muxes := 3     
-	   2 Input      3 Bit        Muxes := 8     
-	  12 Input      3 Bit        Muxes := 1     
-	  16 Input      2 Bit        Muxes := 1     
-	  19 Input      2 Bit        Muxes := 1     
+	  21 Input      5 Bit        Muxes := 1     
+	  13 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 7     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 9     
+	   3 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 7     
+	  18 Input      2 Bit        Muxes := 1     
+	  21 Input      2 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
+	   4 Input      2 Bit        Muxes := 1     
 	  13 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 613   
-	  16 Input      1 Bit        Muxes := 5     
-	  19 Input      1 Bit        Muxes := 11    
-	  27 Input      1 Bit        Muxes := 1     
-	   4 Input      1 Bit        Muxes := 27    
+	   2 Input      1 Bit        Muxes := 869   
+	  18 Input      1 Bit        Muxes := 3     
+	   4 Input      1 Bit        Muxes := 284   
+	  21 Input      1 Bit        Muxes := 264   
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -423,30 +420,30 @@ Detailed RTL Component Info :
 	   3 Input      8 Bit       Adders := 1     
 +---Registers : 
 	               31 Bit    Registers := 1     
-	                8 Bit    Registers := 261   
+	                8 Bit    Registers := 259   
 	                5 Bit    Registers := 1     
 	                2 Bit    Registers := 1     
 +---Muxes : 
 	   3 Input     16 Bit        Muxes := 1     
-	   3 Input      8 Bit        Muxes := 1     
+	  21 Input      8 Bit        Muxes := 6     
 	   2 Input      8 Bit        Muxes := 7     
-	  16 Input      8 Bit        Muxes := 2     
-	  16 Input      6 Bit        Muxes := 1     
-	  19 Input      5 Bit        Muxes := 1     
-	   8 Input      5 Bit        Muxes := 1     
-	   2 Input      5 Bit        Muxes := 2     
-	   2 Input      4 Bit        Muxes := 7     
-	   3 Input      4 Bit        Muxes := 3     
-	   2 Input      3 Bit        Muxes := 4     
-	  12 Input      3 Bit        Muxes := 1     
-	  16 Input      2 Bit        Muxes := 1     
-	  19 Input      2 Bit        Muxes := 1     
+	  18 Input      8 Bit        Muxes := 3     
+	  21 Input      5 Bit        Muxes := 1     
+	  13 Input      5 Bit        Muxes := 1     
+	   2 Input      5 Bit        Muxes := 5     
+	   4 Input      5 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 6     
+	   3 Input      4 Bit        Muxes := 2     
+	   2 Input      3 Bit        Muxes := 3     
+	  18 Input      2 Bit        Muxes := 1     
+	  21 Input      2 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 2     
-	  16 Input      1 Bit        Muxes := 5     
-	   2 Input      1 Bit        Muxes := 516   
-	  19 Input      1 Bit        Muxes := 11    
-	  27 Input      1 Bit        Muxes := 1     
+	   4 Input      2 Bit        Muxes := 1     
+	  18 Input      1 Bit        Muxes := 3     
+	   2 Input      1 Bit        Muxes := 772   
+	   4 Input      1 Bit        Muxes := 257   
+	  21 Input      1 Bit        Muxes := 264   
 Module spi_quad_master 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -487,7 +484,6 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-5587] ROM size for "p_0_out" is below threshold of ROM address width. It will be mapped to LUTs
 WARNING: [Synth 8-6014] Unused sequential element uart/rx_error_reg was removed.  [E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd:82]
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[30]' (FDRE) to 'flasher/current_dummy_bytes_reg[29]'
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[29]' (FDRE) to 'flasher/current_dummy_bytes_reg[28]'
@@ -512,21 +508,21 @@ INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[11]' (FDR
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[10]' (FDRE) to 'flasher/current_dummy_bytes_reg[9]'
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[9]' (FDRE) to 'flasher/current_dummy_bytes_reg[8]'
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[8]' (FDRE) to 'flasher/current_dummy_bytes_reg[7]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[0]' (FDE) to 'spi/slave_reg[0]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[0]' (FDE) to 'spi/clk_ratio_reg[2]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[1]' (FDE) to 'spi/slave_reg[0]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[2]' (FDE) to 'spi/slave_reg[0]'
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\spi/clk_ratio_reg[2] )
 INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[0]' (FDE) to 'spi/last_bit_rx_reg[1]'
 INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[1]' (FDE) to 'spi/last_bit_rx_reg[2]'
 INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[2]' (FDE) to 'spi/last_bit_rx_reg[3]'
 INFO: [Synth 8-3886] merging instance 'spi/last_bit_rx_reg[3]' (FDE) to 'spi/last_bit_rx_reg[4]'
 INFO: [Synth 8-3333] propagating constant 1 across sequential element (\spi/last_bit_rx_reg[4] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\spi/last_bit_rx_reg[5] )
-INFO: [Synth 8-3886] merging instance 'spi/slave_reg[0]' (FDE) to 'spi/clk_ratio_reg[4]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[3]' (FDE) to 'spi/clk_ratio_reg[6]'
+INFO: [Synth 8-3886] merging instance 'spi/slave_reg[0]' (FDE) to 'spi/clk_ratio_reg[3]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[3]' (FDE) to 'spi/clk_ratio_reg[4]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[4]' (FDE) to 'spi/clk_ratio_reg[5]'
-INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[5]' (FDE) to 'spi/clk_ratio_reg[8]'
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[5]' (FDE) to 'spi/clk_ratio_reg[6]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[6]' (FDE) to 'spi/clk_ratio_reg[7]'
-INFO: [Synth 8-3333] propagating constant 1 across sequential element (\spi/clk_ratio_reg[7] )
+INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[7]' (FDE) to 'spi/clk_ratio_reg[8]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[8]' (FDE) to 'spi/clk_ratio_reg[9]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[9]' (FDE) to 'spi/clk_ratio_reg[10]'
 INFO: [Synth 8-3886] merging instance 'spi/clk_ratio_reg[10]' (FDE) to 'spi/clk_ratio_reg[11]'
@@ -557,17 +553,32 @@ INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[2]' (FDRE
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[3]' (FDRE) to 'flasher/current_dummy_bytes_reg[5]'
 INFO: [Synth 8-3886] merging instance 'flasher/current_dummy_bytes_reg[4]' (FDRE) to 'flasher/current_dummy_bytes_reg[5]'
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (flasher/\current_dummy_bytes_reg[5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (flasher/\saved_state_reg[4] )
 WARNING: [Synth 8-3332] Sequential element (current_dummy_bytes_reg[5]) is unused and will be removed from module flash_logic.
-WARNING: [Synth 8-3332] Sequential element (saved_state_reg[4]) is unused and will be removed from module flash_logic.
 WARNING: [Synth 8-3332] Sequential element (uart/rx_buffer_reg[0]) is unused and will be removed from module top_level.
 WARNING: [Synth 8-3332] Sequential element (spi/last_bit_rx_reg[5]) is unused and will be removed from module top_level.
 WARNING: [Synth 8-3332] Sequential element (spi/last_bit_rx_reg[4]) is unused and will be removed from module top_level.
-WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[7]) is unused and will be removed from module top_level.
+WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[2]) is unused and will be removed from module top_level.
 WARNING: [Synth 8-3332] Sequential element (spi/clk_ratio_reg[31]) is unused and will be removed from module top_level.
 INFO: [Synth 8-3886] merging instance 'i_7' (FDCE) to 'i_5'
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:01:03 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:49 ; elapsed = 00:01:04 . Memory (MB): peak = 877.063 ; gain = 586.910
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++------------+------------+---------------+----------------+
+|Module Name | RTL Object | Depth x Width | Implemented As | 
++------------+------------+---------------+----------------+
+|flash_logic | cont_spi   | 32x1          | LUT            | 
+|flash_logic | SPI_ena    | 32x1          | LUT            | 
+|flash_logic | cont_spi   | 32x1          | LUT            | 
+|flash_logic | SPI_ena    | 32x1          | LUT            | 
++------------+------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -579,13 +590,13 @@ Report RTL Partitions:
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:53 ; elapsed = 00:01:13 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:56 ; elapsed = 00:01:13 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:55 ; elapsed = 00:01:15 . Memory (MB): peak = 862.590 ; gain = 571.738
+Finished Timing Optimization : Time (s): cpu = 00:00:59 ; elapsed = 00:01:15 . Memory (MB): peak = 877.063 ; gain = 586.910
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -597,7 +608,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:57 ; elapsed = 00:01:17 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Technology Mapping : Time (s): cpu = 00:01:01 ; elapsed = 00:01:18 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -621,7 +632,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished IO Insertion : Time (s): cpu = 00:01:02 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -634,7 +645,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:02 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -646,25 +657,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -683,16 +694,16 @@ Report Cell Usage:
 |1     |BUFG   |     1|
 |2     |CARRY4 |    26|
 |3     |LUT1   |    14|
-|4     |LUT2   |   180|
-|5     |LUT3   |    86|
-|6     |LUT4   |   143|
-|7     |LUT5   |   263|
-|8     |LUT6   |  1196|
-|9     |MUXF7  |   250|
-|10    |MUXF8  |    75|
+|4     |LUT2   |   164|
+|5     |LUT3   |   143|
+|6     |LUT4   |   168|
+|7     |LUT5   |   209|
+|8     |LUT6   |  1131|
+|9     |MUXF7  |   266|
+|10    |MUXF8  |   133|
 |11    |FDCE   |    45|
 |12    |FDPE   |     7|
-|13    |FDRE   |  2202|
+|13    |FDRE   |  2179|
 |14    |FDSE   |     4|
 |15    |IBUF   |     3|
 |16    |IOBUF  |     4|
@@ -703,19 +714,19 @@ Report Instance Areas:
 +------+----------+----------------+------+
 |      |Instance  |Module          |Cells |
 +------+----------+----------------+------+
-|1     |top       |                |  4518|
-|2     |  flasher |flash_logic     |  4105|
-|3     |  spi     |spi_quad_master |   259|
-|4     |  uart    |uart            |   121|
+|1     |top       |                |  4516|
+|2     |  flasher |flash_logic     |  4100|
+|3     |  spi     |spi_quad_master |   287|
+|4     |  uart    |uart            |    96|
 +------+----------+----------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:19 . Memory (MB): peak = 900.082 ; gain = 609.930
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:45 ; elapsed = 00:01:10 . Memory (MB): peak = 885.605 ; gain = 246.859
-Synthesis Optimization Complete : Time (s): cpu = 00:00:59 ; elapsed = 00:01:19 . Memory (MB): peak = 885.605 ; gain = 594.754
+Synthesis finished with 0 errors, 0 critical warnings and 7 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:50 ; elapsed = 00:01:11 . Memory (MB): peak = 900.082 ; gain = 266.656
+Synthesis Optimization Complete : Time (s): cpu = 00:01:03 ; elapsed = 00:01:20 . Memory (MB): peak = 900.082 ; gain = 609.930
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 358 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 432 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'top_level' is not ideal for floorplanning, since the cellview 'flash_logic' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -725,11 +736,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUF, OBUFT): 4 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-298 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+294 Infos, 10 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:01 ; elapsed = 00:01:23 . Memory (MB): peak = 885.605 ; gain = 606.691
+synth_design: Time (s): cpu = 00:01:05 ; elapsed = 00:01:23 . Memory (MB): peak = 900.082 ; gain = 622.238
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint 'E:/workspace/SPI_Flasher/SPI_Flasher.runs/synth_1/top_level.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file top_level_utilization_synth.rpt -pb top_level_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 885.605 ; gain = 0.000
-INFO: [Common 17-206] Exiting Vivado at Wed Sep 18 00:42:01 2019...
+report_utilization: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 900.082 ; gain = 0.000
+INFO: [Common 17-206] Exiting Vivado at Sun Sep 22 19:28:10 2019...

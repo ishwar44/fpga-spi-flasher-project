@@ -139,7 +139,7 @@ spi : entity work.spi_quad_master
     clock => clk,
     reset_n => rst,
     enable => spi_ena_sig,
-    clk_div => 200,
+    clk_div => 5,
     addr =>  0,   
     rw  => rw_sig,
     cont => cont_spi_sig,    

@@ -38,7 +38,7 @@ entity flash_logic is
 		uart_data_width		:	INTEGER		:= 8;
 		spi_data_width		:	INTEGER		:= 8;
 		spi_cmd_width		:	INTEGER		:= 8;
-		memory_size         :   INTEGER     :=  131072--in bytes
+		memory_size         :   INTEGER     :=  32768--in bytes
 		);
     Port ( clk : in STD_LOGIC;
            rst : in STD_LOGIC;
@@ -65,7 +65,7 @@ architecture Behavioral of flash_logic is
 type byte_arr is array (0 to 255) of std_logic_vector(7 downto 0);
 constant Number_of_Address_Bytes: positive := n_bits(memory_size-1)/8;
 type address_bytes is array (0 to Number_of_Address_Bytes) of unsigned(7 downto 0);
-type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status,set_dual_mode,set_quad_mode);
+type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status,set_dual_mode,set_quad_mode,set_write_enable,misc_read,misc_write);
 signal state,next_state,saved_state,next_saved_state: state_type:= uart_welecome; -- current and next state
 constant Hello_msg : String (1 to 12) := "Hello,World!";
 
@@ -95,6 +95,11 @@ constant read_ins : std_logic_vector(7 downto 0) := "00000011";
 constant dual_ins : std_logic_vector(7 downto 0) := "00111011";
 constant quad_ins : std_logic_vector(7 downto 0) := "00111000";
 constant reset_ins : std_logic_vector(7 downto 0) := "11111111";
+constant write_en_ins : std_logic_vector(7 downto 0) := "00000110";
+constant write_dis_ins : std_logic_vector(7 downto 0) := "00000100";
+
+
+
 begin
 
 SYNC_PROC: process (clk) 
@@ -234,6 +239,20 @@ SYNC_PROC: process (clk)
         SPI_CMD_out <= quad_ins;
         SPI_ena <= '1';
       
+      when set_write_enable =>
+          cmd_only <= '1';
+          SPI_CMD_out <= write_en_ins;
+          SPI_ena <= '1';
+      
+      
+      when misc_read =>
+         SPI_CMD_out <= current_data(0);
+         SPI_data_out <= (others => '0');
+         rw <= '0';
+         cont_spi <= '1';
+         SPI_ena <= '1';
+        
+      
       when others => 
          uart_tx_en <= '0';
          uart_tx_data <= (others => '0');
@@ -311,7 +330,7 @@ SYNC_PROC: process (clk)
         elsif (current_uart_data = "01100010") then  -- b to set the number of bytes
             next_state <= wait_for_uart;
         elsif (current_uart_data = "01100101") then  -- e to enable the write access
-        
+            next_state <= set_write_enable;
         elsif (current_uart_data = "01100111") then  -- g to get data from uart
             next_state <= wait_for_uart;
         elsif (current_uart_data = "01111000") then  -- x to get the status of the flaher on the uart
@@ -320,6 +339,8 @@ SYNC_PROC: process (clk)
             next_state <= set_dual_mode;
         elsif (current_uart_data = "01110001") then  -- q to put the memory and SPI port into quad SPI mode
             next_state <= set_quad_mode;
+        elsif (current_uart_data = "01010010") then  -- R to read the status register
+            next_state <= wait_for_uart;
         else
             next_state <= wait_for_uart_cmd;
         end if;
@@ -344,7 +365,10 @@ SYNC_PROC: process (clk)
                 else
                    next_index <= current_index + 1;
                    next_state <= wait_for_uart;
-                end if;                
+                end if;
+            elsif(current_uart_data = "01010010") then
+                next_data(0) <= uart_rx_data;
+                next_state <= misc_read;
             else
                 next_data(to_integer(current_index)) <= uart_rx_data;
                 if(current_index = current_num_bytes - 1) then
@@ -479,10 +503,35 @@ SYNC_PROC: process (clk)
        else
            next_state <= set_dual_mode;
        end if;
-        
-     when send_to_spi =>
+      
+      when set_write_enable =>
+        if(SPI_busy = '0') then
+             next_state <= wait_for_uart_cmd;
+         else
+             next_state <= set_write_enable;
+         end if;
         
       
+      
+     when send_to_spi =>
+        
+     when misc_read =>
+     if(SPI_busy = '0') then
+        if(current_index > current_dummy_bytes - 1) then
+         next_data(to_integer(current_index)-current_dummy_bytes) <= SPI_data_in;
+        end if;
+        if(current_index = current_num_bytes + current_dummy_bytes - 1 ) then
+           next_index <= (others => '0');
+           next_state <= send_uart_data; -- this is for debug purposes 
+        else
+           next_state <= wait_for_clock;
+           next_saved_state <= misc_read;
+           next_index <= current_index + 1;
+        end if;
+     else
+         next_state <= misc_read;
+     end if;
+        
       
       when others =>  
         next_state <= uart_welecome;

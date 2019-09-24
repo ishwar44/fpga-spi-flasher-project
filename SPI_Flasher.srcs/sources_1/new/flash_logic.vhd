@@ -63,9 +63,9 @@ end flash_logic;
 
 architecture Behavioral of flash_logic is
 type byte_arr is array (0 to 255) of std_logic_vector(7 downto 0);
-constant Number_of_Address_Bytes: positive := 2;
-type address_bytes is array (0 to Number_of_Address_Bytes) of unsigned(7 downto 0);
-type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status,set_dual_mode,set_quad_mode,set_write_enable,misc_read,misc_write,misc_single);
+constant Max_Number_of_Address_Bytes: positive := 4;
+type address_bytes is array (0 to Max_Number_of_Address_Bytes-1) of unsigned(7 downto 0);
+type state_type is (wait_for_clock,uart_welecome,wait_for_uart_cmd,get_uart_data_cmd,check_cmd_byte,send_uart_data,send_to_spi,flash_memory_address,flash_memory_data,set_num_bytes,read_from_start_address,read_from_start_data,wait_for_uart,get_uart_data,set_address,get_status,set_dual_mode,set_quad_mode,set_write_enable,misc_read,misc_write,misc_single,change_address_bytes);
 signal state,next_state,saved_state,next_saved_state: state_type:= uart_welecome; -- current and next state
 constant Hello_msg : String (1 to 12) := "Hello,World!";
 
@@ -101,7 +101,9 @@ constant reset_ins : std_logic_vector(7 downto 0) := "11111111";
 constant write_en_ins : std_logic_vector(7 downto 0) := "00000110";
 constant write_dis_ins : std_logic_vector(7 downto 0) := "00000100";
 
-
+constant Max_Number_of_Address_Bytes_bits : positive :=n_bits(Max_Number_of_Address_Bytes);
+signal current_number_of_address_bytes : unsigned(Max_Number_of_Address_Bytes_bits-1 downto 0) := to_unsigned(2,Max_Number_of_Address_Bytes_bits);
+signal next_number_of_address_bytes : unsigned(Max_Number_of_Address_Bytes_bits-1 downto 0) := to_unsigned(2,Max_Number_of_Address_Bytes_bits);
 
 begin
 
@@ -119,6 +121,7 @@ SYNC_PROC: process (clk)
         current_spi_mode <= (others => '0');
         current_dummy_bytes <= 1;
         current_misc_command <=(others => '0');
+        current_number_of_address_bytes <= to_unsigned(2,Max_Number_of_Address_Bytes_bits);
       else
         state <= next_state;
         current_index <= next_index;
@@ -130,12 +133,13 @@ SYNC_PROC: process (clk)
         current_spi_mode <= next_spi_mode;
         current_dummy_bytes <= next_dummy_bytes;
         current_misc_command <= next_misc_command;
+        current_number_of_address_bytes <= next_number_of_address_bytes;
       end if;
     end if;
   end process;
 
 
-  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command)
+  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes)
   begin
     uart_tx_en <= '0';
     uart_tx_data <= (others => '0');
@@ -223,7 +227,7 @@ SYNC_PROC: process (clk)
       when wait_for_clock =>
       
       when get_status =>
-        if(current_index <= Number_of_Address_Bytes) then
+        if(current_index <= current_number_of_address_bytes) then
             uart_tx_data <=  std_logic_vector(current_address(to_integer(current_index)));
         else
             uart_tx_data <= std_logic_vector(current_num_bytes);
@@ -276,7 +280,7 @@ SYNC_PROC: process (clk)
   end process;
 
 
-  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command)
+  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes)
   begin
   
     next_state <= state;
@@ -289,6 +293,7 @@ SYNC_PROC: process (clk)
     next_spi_mode <= current_spi_mode;
     next_dummy_bytes <= current_dummy_bytes;
     next_misc_command <= current_misc_command;
+    next_number_of_address_bytes <= current_number_of_address_bytes;
     case (state) is
       when wait_for_clock =>
         next_state <= saved_state;
@@ -364,6 +369,8 @@ SYNC_PROC: process (clk)
             next_index <= to_unsigned(1,8);
         elsif (current_uart_data = "00110001") then  -- 1 misc to send 1 byte.
             next_state <= misc_single;
+        elsif(current_uart_data = "01000001") then --A change address byte number
+            next_state <= wait_for_uart;
         else
             next_state <= wait_for_uart_cmd;
         end if;
@@ -382,7 +389,7 @@ SYNC_PROC: process (clk)
                 next_state <= set_num_bytes;
             elsif(current_uart_data = "01100001") then
                 next_data(to_integer(current_index)) <= uart_rx_data;
-                if(current_index = Number_of_Address_Bytes) then
+                if(current_index = current_number_of_address_bytes) then
                    next_index <= (others => '0');
                    next_state <= set_address;
                 else
@@ -392,6 +399,9 @@ SYNC_PROC: process (clk)
             elsif(current_uart_data = "01010010") then
                 next_data(0) <= uart_rx_data;
                 next_state <= misc_read;
+            elsif(current_uart_data = "01000001") then
+                next_number_of_address_bytes <= unsigned(uart_rx_data(Max_Number_of_Address_Bytes_bits-1 downto 0));
+                next_state <= wait_for_uart_cmd;
             else
                 next_data(to_integer(current_index)) <= uart_rx_data;
                 if(current_index = current_num_bytes - 1) then
@@ -424,7 +434,7 @@ SYNC_PROC: process (clk)
        
      when  flash_memory_address =>
          if(SPI_busy = '0') then
-           if(current_index = Number_of_Address_Bytes) then
+           if(current_index = current_number_of_address_bytes) then
               next_index <= (others => '0');
               next_state <= flash_memory_data;
            else
@@ -452,7 +462,7 @@ SYNC_PROC: process (clk)
      
      when read_from_start_address =>
          if(SPI_busy = '0') then
-           if(current_index = Number_of_Address_Bytes) then
+           if(current_index = current_number_of_address_bytes) then
               next_index <= (others => '0');
               next_state <= read_from_start_data;
            else
@@ -492,13 +502,13 @@ SYNC_PROC: process (clk)
      
      when set_address =>
         next_state <= wait_for_uart_cmd;
-        for i in 0 to Number_of_Address_Bytes loop
+        for i in 0 to Max_Number_of_Address_Bytes - 1 loop
             next_address(i) <=  unsigned(current_data(i));
         end loop;
     
     when get_status =>
         if(uart_tx_busy = '0') then
-           if(current_index = Number_of_Address_Bytes + 1) then
+           if(current_index = current_number_of_address_bytes + 1) then
               next_index <= (others => '0');
               next_state <= wait_for_uart_cmd;
            else

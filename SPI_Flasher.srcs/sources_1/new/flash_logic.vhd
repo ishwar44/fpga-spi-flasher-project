@@ -81,8 +81,8 @@ signal next_address :address_bytes :=(others => (others => '0'));
 signal current_data : byte_arr := (others => (others => '0'));
 signal next_data : byte_arr := (others => (others => '0'));
 
-signal current_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
-signal next_num_bytes : unsigned(7 downto 0) := to_unsigned(4,8);
+signal current_num_bytes : unsigned(7 downto 0) := to_unsigned(3,8);
+signal next_num_bytes : unsigned(7 downto 0) := to_unsigned(3,8);
 
 signal current_spi_mode : std_logic_vector(1 downto 0) := (others => '0');
 signal next_spi_mode : std_logic_vector(1 downto 0) := (others => '0');
@@ -105,6 +105,9 @@ constant Max_Number_of_Address_Bytes_bits : positive :=n_bits(Max_Number_of_Addr
 signal current_number_of_address_bytes : unsigned(Max_Number_of_Address_Bytes_bits-1 downto 0) := to_unsigned(2,Max_Number_of_Address_Bytes_bits);
 signal next_number_of_address_bytes : unsigned(Max_Number_of_Address_Bytes_bits-1 downto 0) := to_unsigned(2,Max_Number_of_Address_Bytes_bits);
 
+signal current_dummy_counter : unsigned(2 downto 0) := (others => '0');
+signal next_dummy_counter : unsigned(2 downto 0) := (others => '0');
+
 begin
 
 SYNC_PROC: process (clk) 
@@ -117,11 +120,12 @@ SYNC_PROC: process (clk)
         current_uart_data <= (others => '0');
         current_address <= (others => (others => '0'));
         current_data <= (others => (others => '0'));
-        current_num_bytes <= to_unsigned(4,8);
+        current_num_bytes <= to_unsigned(3,8);
         current_spi_mode <= (others => '0');
         current_dummy_bytes <= 1;
         current_misc_command <=(others => '0');
         current_number_of_address_bytes <= to_unsigned(2,Max_Number_of_Address_Bytes_bits);
+        current_dummy_counter <= (others => '0');
       else
         state <= next_state;
         current_index <= next_index;
@@ -134,12 +138,13 @@ SYNC_PROC: process (clk)
         current_dummy_bytes <= next_dummy_bytes;
         current_misc_command <= next_misc_command;
         current_number_of_address_bytes <= next_number_of_address_bytes;
+        current_dummy_counter <= next_dummy_counter;
       end if;
     end if;
   end process;
 
 
-  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes)
+  OUTPUT_DECODE: process (state,saved_state,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes,current_dummy_counter)
   begin
     uart_tx_en <= '0';
     uart_tx_data <= (others => '0');
@@ -280,7 +285,7 @@ SYNC_PROC: process (clk)
   end process;
 
 
-  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes)
+  NEXT_STATE_DECODE: process (state ,saved_state ,uart_tx_busy,uart_rx_data,uart_rx_busy,current_index,current_uart_data,current_address,current_data,current_num_bytes,SPI_busy,command_debug,current_spi_mode,current_dummy_bytes,current_misc_command,current_number_of_address_bytes,current_dummy_counter)
   begin
   
     next_state <= state;
@@ -294,6 +299,7 @@ SYNC_PROC: process (clk)
     next_dummy_bytes <= current_dummy_bytes;
     next_misc_command <= current_misc_command;
     next_number_of_address_bytes <= current_number_of_address_bytes;
+    next_dummy_counter <= current_dummy_counter;
     case (state) is
       when wait_for_clock =>
         next_state <= saved_state;
@@ -404,7 +410,7 @@ SYNC_PROC: process (clk)
                 next_state <= wait_for_uart_cmd;
             else
                 next_data(to_integer(current_index)) <= uart_rx_data;
-                if(current_index = current_num_bytes - 1) then
+                if(current_index = current_num_bytes) then
                    next_index <= (others => '0');
                    next_state <= wait_for_uart_cmd;
                 else
@@ -420,7 +426,7 @@ SYNC_PROC: process (clk)
          
      when send_uart_data =>
         if(uart_tx_busy = '0') then
-           if(current_index = current_num_bytes - 1) then
+           if(current_index = current_num_bytes) then
               next_index <= (others => '0');
               next_state <= wait_for_uart_cmd;
            else
@@ -448,7 +454,7 @@ SYNC_PROC: process (clk)
     
      when  flash_memory_data =>
         if(SPI_busy = '0') then
-          if(current_index = current_num_bytes - 1) then
+          if(current_index = current_num_bytes) then
              next_index <= (others => '0');
              next_state <= wait_for_uart_cmd;
           else
@@ -476,16 +482,19 @@ SYNC_PROC: process (clk)
         
      when read_from_start_data =>
         if(SPI_busy = '0') then
-           if(current_index > current_dummy_bytes - 1) then
-            next_data(to_integer(current_index)-current_dummy_bytes) <= SPI_data_in;
-           end if;
-           if(current_index = current_num_bytes + current_dummy_bytes - 1 ) then
+           next_data(to_integer(current_index)) <= SPI_data_in;
+           if(current_index = current_num_bytes) then
               next_index <= (others => '0');
-              next_state <= send_uart_data; -- this is for debug purposes 
+              next_state <= send_uart_data; -- this is for debug purposes
+              next_dummy_counter <= (others => '0');
            else
               next_state <= wait_for_clock;
               next_saved_state <= read_from_start_data;
-              next_index <= current_index + 1;
+              if(current_dummy_counter = current_dummy_bytes) then
+                 next_index <= current_index + 1;
+              else
+                next_dummy_counter <= current_dummy_counter  + 1;
+              end if;
            end if;
         else
             next_state <= read_from_start_data;

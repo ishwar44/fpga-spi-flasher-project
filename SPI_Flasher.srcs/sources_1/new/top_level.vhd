@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -49,7 +49,9 @@ entity top_level is
            sdio : inout std_logic;
            sdio1 : inout std_logic;
            sdio2: inout std_logic;
-           sdio3 : inout std_logic
+           sdio3 : inout std_logic;
+            C : out STD_LOGIC_VECTOR(7 downto 0);
+            AN : out STD_LOGIC_VECTOR(7 downto 0)
            );
 end top_level;
 
@@ -69,14 +71,19 @@ signal spi_rx_data_sig : std_logic_vector(spi_data_width - 1 downto 0);
 signal cmd_only_sig : std_logic;
 signal mode_sel_sig : std_logic_vector(1 downto 0);
 signal spi_busy_sig : std_logic;
-
+signal address_sig : std_logic_vector(31 downto 0);
+signal requested_bytes_sig : unsigned(7 downto 0);
+signal req_sig : std_logic;
+signal flash_busy_sig : std_logic;
+signal flash_data_sig : std_logic_vector(spi_data_width - 1 downto 0);
+signal data_is_ready_sig : std_logic;
 begin
 
 uart : entity work.uart
 generic map
 (
     clk_freq =>  clk_freq,
-    baud_rate =>  1000000,
+    baud_rate =>  2000000,
     os_rate	 => 8,		
     d_width	 => uart_data_width,
     parity	=> 0,	
@@ -122,7 +129,13 @@ port map
     SPI_busy =>spi_busy_sig,
     SPI_ena =>spi_ena_sig,
     command_debug => '0',
-    cont_spi => cont_spi_sig
+    cont_spi => cont_spi_sig,
+    address => address_sig,
+    requested_bytes => requested_bytes_sig,
+    req => req_sig,
+    busy => flash_busy_sig,
+    data_out => flash_data_sig,
+    data_is_ready  => data_is_ready_sig
 );
 
 spi : entity work.spi_quad_master
@@ -156,5 +169,23 @@ spi : entity work.spi_quad_master
     busy  => spi_busy_sig, 
     rx_data => spi_rx_data_sig
   );
+
+
+test : entity work.test_logic
+    Port map
+    ( 
+    clk => clk,
+    rst =>rst,
+    busy =>flash_busy_sig,
+    req => req_sig,
+    data_in => flash_data_sig,
+    address => address_sig,
+    requested_bytes => requested_bytes_sig,
+    done => data_is_ready_sig,
+    anode  =>AN,
+    cathode =>C
+    );
+
+
 
 end Behavioral;

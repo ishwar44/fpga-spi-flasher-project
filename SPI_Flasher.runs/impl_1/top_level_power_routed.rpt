@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2018.2 (win64) Build 2258646 Thu Jun 14 20:03:12 MDT 2018
-| Date             : Wed Sep 25 22:09:16 2019
+| Date             : Sat Sep 28 23:10:56 2019
 | Host             : Ishwar running 64-bit major release  (build 9200)
 | Command          : report_power -file top_level_power_routed.rpt -pb top_level_power_summary_routed.pb -rpx top_level_power_routed.rpx
 | Design           : top_level
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.115        |
+| Total On-Chip Power (W)  | 0.108        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.018        |
+| Dynamic (W)              | 0.011        |
 | Device Static (W)        | 0.097        |
 | Effective TJA (C/W)      | 4.6          |
 | Max Ambient (C)          | 84.5         |
@@ -52,17 +52,17 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Clocks         |     0.005 |        3 |       --- |             --- |
-| Slice Logic    |     0.005 |     4643 |       --- |             --- |
-|   LUT as Logic |     0.004 |     1661 |     63400 |            2.62 |
-|   F7/F8 Muxes  |    <0.001 |      391 |     63400 |            0.62 |
-|   CARRY4       |    <0.001 |       26 |     15850 |            0.16 |
-|   Register     |    <0.001 |     2278 |    126800 |            1.80 |
-|   Others       |     0.000 |        8 |       --- |             --- |
-| Signals        |     0.008 |     3713 |       --- |             --- |
-| I/O            |    <0.001 |       26 |       210 |           12.38 |
+| Clocks         |     0.006 |        3 |       --- |             --- |
+| Slice Logic    |     0.001 |     4577 |       --- |             --- |
+|   LUT as Logic |     0.001 |     1762 |     63400 |            2.78 |
+|   CARRY4       |    <0.001 |       38 |     15850 |            0.24 |
+|   Register     |    <0.001 |     2369 |    126800 |            1.87 |
+|   F7/F8 Muxes  |    <0.001 |      134 |     63400 |            0.21 |
+|   Others       |     0.000 |       12 |       --- |             --- |
+| Signals        |     0.003 |     4133 |       --- |             --- |
+| I/O            |    <0.001 |       42 |       210 |           20.00 |
 | Static Power   |     0.097 |          |           |                 |
-| Total          |     0.115 |          |           |                 |
+| Total          |     0.108 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -72,7 +72,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.032 |       0.017 |      0.015 |
+| Vccint    |       1.000 |     0.025 |       0.010 |      0.015 |
 | Vccaux    |       1.800 |     0.018 |       0.000 |      0.018 |
 | Vcco33    |       3.300 |     0.004 |       0.000 |      0.004 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -138,17 +138,19 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+--------------------+-----------+
-| Name               | Power (W) |
-+--------------------+-----------+
-| top_level          |     0.018 |
-|   flasher          |     0.013 |
-|   sdio1_IOBUF_inst |     0.000 |
-|   sdio2_IOBUF_inst |     0.000 |
-|   sdio3_IOBUF_inst |     0.000 |
-|   sdio_IOBUF_inst  |     0.000 |
-|   spi              |     0.003 |
-|   uart             |    <0.001 |
-+--------------------+-----------+
++--------------------------+-----------+
+| Name                     | Power (W) |
++--------------------------+-----------+
+| top_level                |     0.011 |
+|   flasher                |     0.007 |
+|   sdio1_IOBUF_inst       |     0.000 |
+|   sdio2_IOBUF_inst       |     0.000 |
+|   sdio3_IOBUF_inst       |     0.000 |
+|   sdio_IOBUF_inst        |     0.000 |
+|   spi                    |     0.003 |
+|   test                   |    <0.001 |
+|     inst_segment_display |    <0.001 |
+|   uart                   |    <0.001 |
++--------------------------+-----------+
 
 

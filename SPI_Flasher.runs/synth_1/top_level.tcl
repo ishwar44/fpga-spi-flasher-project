@@ -36,6 +36,8 @@ read_vhdl -library xil_defaultlib {
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/std_logic_textio.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/CPU_with_SPI/util.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/flash_logic.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/segment_display.vhd
+  E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/test_logic.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/imports/new/uart.vhd
   E:/workspace/SPI_Flasher/SPI_Flasher.srcs/sources_1/new/top_level.vhd
 }
